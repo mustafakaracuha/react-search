@@ -32,6 +32,6 @@ https://life-planning-ui.vercel.app/
   
 ### Screenshot
 
-<img align="center" width="900" width="900" src="https://github.com/mustafakaracuha/react-search/blob/main/src/assests/screenshot.png" />
+<img align="center" width="900" width="900" src="https://github.com/mustafakaracuha/react-search/blob/main/src/assests/app.gif" />
 
   
