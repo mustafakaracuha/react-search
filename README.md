@@ -1,4 +1,4 @@
-# React Search
+# React Search Animated
 
 
 ## Technologies and Libraries
