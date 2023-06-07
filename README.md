@@ -27,7 +27,7 @@
 
     
 ## Live
-https://life-planning-ui.vercel.app/
+https://react-search-motion.vercel.app/
 
   
 ### Screenshot
