@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 import { AiOutlineSearch } from "react-icons/ai";
@@ -12,14 +12,14 @@ import { data } from "./data";
 
 function App() {
   const [allItem, setAllItem] = useState(data);
+  const [searchValue, setSearchValue] = useState("");
 
-  const handleSearch = (e) => {
-    let searchVal = e.target.value.toLowerCase();
+  useEffect(() => {
     var filterData = data.filter((item) =>
-      item.head.toLowerCase().includes(searchVal)
+      item.head.toLowerCase().includes(searchValue)
     );
     setAllItem(filterData);
-  };
+  }, [searchValue]);
 
   return (
     <div className="w-full h-screen flex items-center justify-center bg-[#F3F3FA]">
@@ -37,7 +37,7 @@ function App() {
               autoFocus
               animate={{ opacity: [0, 1] }}
               transition={{ ease: "easeOut", duration: 0.5 }}
-              onChange={handleSearch}
+              onChange={(e) => setSearchValue(e.target.value.toLowerCase())}
               className="w-[348px] h-[56px] border border-[#DBD5EC] focus-visible: outline-none rounded-[4px] placeholder-[#A0A0A0] pl-11"
               placeholder="Search for a part-time job"
             />
@@ -56,95 +56,94 @@ function App() {
               <motion.div
                 animate={{
                   opacity: [0, 1],
-                  transition: { duration: 0.2,  stiffness: 260,
-                    damping: 20 },
+                  transition: { duration: 0.2, stiffness: 260, damping: 20 },
                 }}
-                whileHover={{scale:1.05,duration: 0.3,}}
+                whileHover={{ scale: 1.05, duration: 0.3 }}
                 key={index}
                 style={{ background: item.background }}
                 className="w-[112px] h-[108px] rounded-[8px] flex flex-col items-center justify-center cursor-pointer"
               >
                 {item.icon === "armchair" ? (
-                   <motion.span
-                   animate={{
-                    opacity:[0,1],
-                    rotate: [-20, 20,0],
-                    transition: { delay: 0.5,duration:0.5 },
-                  }}
-                   >
-                  <LuArmchair size={25} className="mb-1" />
-                   </motion.span>
+                  <motion.span
+                    animate={{
+                      opacity: [0, 1],
+                      rotate: [-20, 20, 0],
+                      transition: { delay: 0.5, duration: 0.5 },
+                    }}
+                  >
+                    <LuArmchair size={25} className="mb-1" />
+                  </motion.span>
                 ) : item.icon === "home" ? (
                   <motion.span
-                   animate={{
-                    opacity:[0,1],
-                    y: [-10, 10,0],
-                    transition: { delay: 0.5,duration:0.5 },
-                  }}
-                   >
-                  <RiHome8Line size={25} className="mb-1" />
+                    animate={{
+                      opacity: [0, 1],
+                      y: [-10, 10, 0],
+                      transition: { delay: 0.5, duration: 0.5 },
+                    }}
+                  >
+                    <RiHome8Line size={25} className="mb-1" />
                   </motion.span>
                 ) : item.icon === "job" ? (
                   <motion.span
-                   animate={{
-                    opacity:[0,1],
-                    x: [-10, 10,0],
-                    transition: { delay: 0.5,duration:0.5 },
-                  }}
-                   >
-                  <TbBuilding size={25} className="mb-" />
+                    animate={{
+                      opacity: [0, 1],
+                      x: [-10, 10, 0],
+                      transition: { delay: 0.5, duration: 0.5 },
+                    }}
+                  >
+                    <TbBuilding size={25} className="mb-" />
                   </motion.span>
                 ) : item.icon === "plane" ? (
                   <motion.span
-                  animate={{
-                    opacity:[0,1],
-                    x: [-150, 20,0],
-                    rotate:[-10,0],
-                   transition: { delay: 0.5,duration:0.5 },
-                 }}
+                    animate={{
+                      opacity: [0, 1],
+                      x: [-150, 20, 0],
+                      rotate: [-10, 0],
+                      transition: { delay: 0.5, duration: 0.5 },
+                    }}
                   >
-                  <TbPlane size={25} className="mb-" />
+                    <TbPlane size={25} className="mb-" />
                   </motion.span>
                 ) : item.icon === "boat" ? (
                   <motion.span
-                  animate={{
-                  opacity:[0,1],
-                   x: [-100,0],
-                   rotate:[-50,-20,0],
-                   transition: { delay: 0.5, duration:0.5 },
-                 }}
+                    animate={{
+                      opacity: [0, 1],
+                      x: [-100, 0],
+                      rotate: [-50, -20, 0],
+                      transition: { delay: 0.5, duration: 0.5 },
+                    }}
                   >
-                  <TbSpeedboat size={25} className="mb-" />
+                    <TbSpeedboat size={25} className="mb-" />
                   </motion.span>
                 ) : item.icon === "mc" ? (
                   <motion.span
-                  animate={{
-                    opacity:[0,1],
-                    x: [-100,0],
-                    rotate:[40,25,0],
-                   transition: { delay: 0.5,duration:0.5 },
-                 }}
+                    animate={{
+                      opacity: [0, 1],
+                      x: [-100, 0],
+                      rotate: [40, 25, 0],
+                      transition: { delay: 0.5, duration: 0.5 },
+                    }}
                   >
-                  <RiMotorbikeLine size={25} className="mb-" />
+                    <RiMotorbikeLine size={25} className="mb-" />
                   </motion.span>
                 ) : (
                   item.icon === "money" && (
                     <motion.span
-                    animate={{
-                     opacity: [0, 1],
-                     scale: [1.4, 1],
-                     transition: { delay: 0.5,duration:0.5 },
-                   }}
+                      animate={{
+                        opacity: [0, 1],
+                        scale: [1.4, 1],
+                        transition: { delay: 0.5, duration: 0.5 },
+                      }}
                     >
-                    <FaRegMoneyBillAlt size={25} className="mb-" />
-                     </motion.span>
+                      <FaRegMoneyBillAlt size={25} className="mb-" />
+                    </motion.span>
                   )
                 )}
                 <motion.p
                   animate={{
                     opacity: [0, 1],
-                    y: [-100,0],
-                    transition: { duration: 0.5},
+                    y: [-100, 0],
+                    transition: { duration: 0.5 },
                   }}
                   className="text-md"
                 >
